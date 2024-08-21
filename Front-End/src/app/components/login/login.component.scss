@@ -1,0 +1,55 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 40px);
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-card {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+}
+
+
+.signup-link {
+    margin: 5px 0px;
+}
+
+.signup-link p {
+    font-size: 14px;
+    margin: 5px 0px 10px;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

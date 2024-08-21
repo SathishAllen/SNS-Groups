@@ -1,0 +1,31 @@
+.list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.list-card {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.user-list-container {
+    margin: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .mat-paginator{
+    margin-top: 2px;
+  }
+
+  .logout-button {
+    align-self: end;
+    margin: 10px;
+  }

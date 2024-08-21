@@ -1,40 +1,55 @@
-<mat-card>
-  <h2>Sign Up</h2>
-  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName" required />
-    </mat-form-field>
+<div class="signup-container">
+  <mat-card class="signup-card">
+    <h2 style="margin-top: 0px;">Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('firstName')?.errors?.['required'] && signupForm.get('firstName')?.touched}">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error *ngIf="signupForm.get('firstName')?.errors?.['required']">First name is required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastName" required />
-    </mat-form-field>
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('lastName')?.errors?.['required'] && signupForm.get('lastName')?.touched}">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error *ngIf="signupForm.get('lastName')?.errors?.['required']">Last name is required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" required type="email" />
-    </mat-form-field>
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched}">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required type="email" />
+        <mat-error *ngIf="signupForm.get('email')?.errors?.['required']">Email is required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Mobile</mat-label>
-      <input matInput formControlName="mobile" required />
-    </mat-form-field>
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('mobile')?.errors?.['required'] && signupForm.get('mobile')?.touched}">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobile" required type="number"/>
+        <mat-error *ngIf="signupForm.get('mobile')?.errors?.['required']">Mobile number is required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Role</mat-label>
-      <mat-select formControlName="role">
-        <mat-option value="User">User</mat-option>
-        <mat-option value="Admin">Admin</mat-option>
-        <mat-option value="Guest">Guest</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('role')?.errors?.['required'] && signupForm.get('role')?.touched}">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="User">User</mat-option>
+          <mat-option value="Admin">Admin</mat-option>
+          <mat-option value="Guest">Guest</mat-option>
+        </mat-select>
+        <mat-error *ngIf="signupForm.get('role')?.errors?.['required']">Role is required</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput formControlName="password" required type="password" />
-    </mat-form-field>
+      <mat-form-field appearance="outline" [ngClass]="{'error' : signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched}">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required type="password" />
+        <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="signupForm.get('password')?.errors?.['required']">Password is required</mat-error>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Sign Up</button>
-  </form>
-</mat-card>
+      <div class="login-link">
+        <p>Already have an account? <a routerLink="/login">Log in here</a></p>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+    </form>
+  </mat-card>
+</div>
